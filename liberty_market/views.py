@@ -36,12 +36,8 @@ class Filter_category(View):
 class Item_detail(View):
     def get(self, request, pk):
         item = Item.objects.get(pk=pk)
-        like = ItemLike.objects.filter(author=request.user, item=item)
-        if like is not None:
-            like = True
-        else:
-            like = False
-        return render(request, 'liberty_market/details.html', {'item': item, 'like': like})
+
+        return render(request, 'liberty_market/details.html', {'item': item})
 
 
 class Author_page(View):
