@@ -4,7 +4,7 @@ from django.core.paginator import Paginator
 from django.shortcuts import render, redirect
 from django.views import View
 
-from liberty_market.form import CreateItemForm, UserRegistrationForm, LoginForm,  ItemUpdateForm
+from liberty_market.form import CreateItemForm, UserRegistrationForm, LoginForm, ItemUpdateForm
 from liberty_market.models import Item, Author, Order, ItemLike
 
 
@@ -49,11 +49,11 @@ class Author_page(View):
 
 class CreateItem(View):
     def get(self, request):
-        form = CreateItemForm(data=request.GET)
+        form = CreateItemForm(data=request.GET, files=request.FILES)
         return render(request, 'liberty_market/create.html', {'form': form})
 
     def post(self, request):
-        form = CreateItemForm(request.POST, request.FILES)
+        form = CreateItemForm(data=request.POST, files=request.FILES)
         if form.is_valid():
             form.save()
             messages.success(request, 'Successfully created')
@@ -118,8 +118,6 @@ class OrdersView(View):
         return redirect('liberty_market:item_details')
 
 
-
-
 class MyItems(View):
     def get(self, reqeust):
         items = Item.objects.filter(author__username=reqeust.user.username)
@@ -129,5 +127,5 @@ class MyItems(View):
 class UpdateItem(View):
     def get(self, request, item_id):
         item = Item.objects.get(id=item_id)
-        form = ItemUpdateForm(instance=item)
+        form = ItemUpdateForm(instance=item, files=request.FILES)
         return render(request, 'liberty_market/update_item.html', {'form': form})
