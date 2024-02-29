@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load crispy_forms_field %}
+{% block body %}
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <h3>Update item</h3>
+    <form action="{% url 'liberty_market:home_page' %}" method="post">
+    <div class="row">
+       <div class="col-5">
+           {% csrf_token %}
+{#           {{ form|crispy }}#}
+           {{ form.as_p }}
+           <a href="{% url 'liberty_market:my_item' %}"><button class="btn btn-primary">Update</button></a>
+       </div>
+
+    </div>
+
+    </form>
+    
+
+{% endblock %}

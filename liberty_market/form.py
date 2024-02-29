@@ -5,9 +5,11 @@ from liberty_market.models import Item, Author, Order
 
 
 class CreateItemForm(forms.ModelForm):
+    image = forms.FileField()
+
     class Meta:
         model = Item
-        fields = ['title', 'description', 'category','author', 'price', 'royalties', 'ends_in', 'owner_full_name',
+        fields = ['title', 'description', 'category', 'author', 'price', 'royalties', 'ends_in', 'owner_full_name',
                   'owner_user_name', 'image']
 
 
@@ -41,8 +43,15 @@ class UserRegistrationForm(forms.ModelForm):
         model = Author
         fields = ("username", "first_name", "last_name", "password1", "password2", "image")
 
+#
+# class OrderForm(forms.ModelForm):
+#     class Meta:
+#         model = Order
+#         fields = ["item"]
 
-class OrderForm(forms.ModelForm):
+
+class ItemUpdateForm(forms.ModelForm):
     class Meta:
-        model = Order
-        fields = ["item"]
+        model = Item
+        fields = ["title", 'description', 'ends_in', 'price', 'owner_full_name', 'category', 'royalties',
+                  'owner_user_name', 'image']

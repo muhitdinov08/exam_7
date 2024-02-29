@@ -37,7 +37,7 @@ class Item(models.Model):
     price = models.IntegerField()
     category = models.ForeignKey(Category, CASCADE, related_name='category')
     royalties = models.IntegerField()
-    image = models.ImageField(upload_to=item_photos)
+    image = models.FileField(upload_to=item_photos)
     owner_full_name = models.CharField(max_length=128)
     owner_user_name = models.CharField(max_length=128)
     ends_in = models.DateTimeField()
