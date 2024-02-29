@@ -1,5 +1,5 @@
 """
-ASGI config for exam_7 project.
+ASGI exam_7 for exam_7 project.
 
 It exposes the ASGI callable as a module-level variable named ``application``.
 

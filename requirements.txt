@@ -1,0 +1,4 @@
+Django~=5.0.2
+pillow~=10.2.0
+crispy-bootstrap4~=2023.1
+faker~=23.3.0

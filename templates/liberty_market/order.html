@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block body %}
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <form action="{% url 'liberty_market:order_page' %}" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Order</button>
+    </form>
+{% endblock %}

@@ -1,5 +1,5 @@
 """
-WSGI config for exam_7 project.
+WSGI exam_7 for exam_7 project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 

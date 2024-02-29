@@ -1,0 +1,46 @@
+{#{% extends 'base.html' %}#}
+{% load static %}
+{% block body %}
+
+    <ul class="nav">
+        <li><a href="{% url 'liberty_market:home_page' %}">Home</a></li>
+        <li><a href="{% url 'liberty_market:explore_page' %}">Explore</a></li>
+        <li><a href="{% url 'liberty_market:item_details' 1 %}" class="active">Item Details</a></li>
+        <li><a href="{% url 'liberty_market:author' %}">Author</a></li>
+        <li><a href="{% url 'liberty_market:create_item' %}">Create Yours</a></li>
+        {% if request.user.is_authenticated %}
+
+            <li><a class="nav-item nav-link" href="{% url 'blog:user-profile' request.user.username %}">Profile</a></li>
+            <li><a class="nav-item nav-link" href="{% url 'liberty_market:logout' %}">Logout</a></li>
+        {% else %}
+            <li><a class="nav-item nav-link" href="{% url 'liberty_market:login' %}">Login</a></li>
+            <li><a class="nav-item nav-link" href="{% url 'liberty_market:register' %}">Register</a></li>
+        {% endif %}
+
+
+
+
+        <br>
+
+        <br>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <h2>Register</h2>
+                    <form action="#" method="post" , enctype="multipart/form-data">
+                        {% csrf_token %}
+
+
+                        {{ form.as_p }}
+
+                        <a href="{% url 'liberty_market:register' %}">
+                            <button type="submit" class="btn btn-primary">Register</button>
+                        </a>
+                    </form>
+                    <p>Already have an account? <a href="{% url 'liberty_market:login' %}">Login</a></p>
+                </div>
+            </div>
+        </div>
+        {#    {% include 'blog/sidebar.html' %}#}
+
+{% endblock %}

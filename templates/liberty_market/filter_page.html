@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block body %}
+    {% for item in items %}
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+        <div class="col-lg-3">
+            <div class="item">
+                <div class="row">
+                    <div class="col-lg-12">
+                <span class="author">
+                  <img src="assets/images/author.jpg" alt=""
+                       style="max-width: 50px; max-height: 50px; border-radius: 50%;">
+                </span>
+                        <img src="assets/images/discover-03.jpg" alt="" style="border-radius: 20px;">
+                        <h4>{{ item.title }}</h4>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="line-dec"></div>
+                        <div class="row">
+                            <div class="col-6">
+                                <span>Current Bid: <br> <strong>{{ item.price }} ETH</strong></span>
+                            </div>
+                            <div class="col-6">
+                                <span>Ends In: <br> <strong>{{ item.ends_in }}</strong></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="main-button">
+                            <a href="{% url 'liberty_market:item_details' item.pk %}">View Details</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+
+
+{% endblock %}
